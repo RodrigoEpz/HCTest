@@ -1,0 +1,4 @@
+/Render_React/hc-render/node_modules*
+*npm-debug.log
+.vscode*
+.vs*
