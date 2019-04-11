@@ -16,6 +16,7 @@ namespace HCApiTest.Models.Context
         {
         }
 
+        // Descomentar para hacer el seed data desde aqui, tomando en cuenta que hay que comentar la parte de startup que hace lo mismo
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Cars>().HasData(

@@ -1,5 +1,7 @@
 ﻿using HCApiTest.Models;
 using HCApiTest.Models.Context;
+using HCApiTest.Services.Interfaces;
+using HCApiTest.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,23 +14,23 @@ namespace HCApiTest.Controllers
     [ApiController]
     public class CarsController : ControllerBase
     {
-        private readonly CarsContext carsDB;
+        IRepositoryCRUD<Cars> carsRepository;
 
-        public CarsController(CarsContext _carsDB)
+        public CarsController(IRepositoryCRUD<Cars> _carsRepository)
         {
-            this.carsDB = _carsDB;
+            this.carsRepository = _carsRepository;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Cars>> Get()
         {
-            return carsDB.Cars.ToList();
+            return Ok(carsRepository.GetAll());
         }
 
-        [HttpGet("first")]
-        public ActionResult<Cars> GetFirst()
+        [HttpGet("{id}")]
+        public ActionResult<Cars> Get(int id)
         {
-            return carsDB.Cars.FirstOrDefault();
+            return Ok(carsRepository.FindById(id));
         }
     }
 }

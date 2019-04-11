@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using HCApiTest.Models;
+using HCApiTest.Services;
+using HCApiTest.Services.Interfaces;
 
 namespace HCApiTest
 {
@@ -20,6 +22,8 @@ namespace HCApiTest
         {
             services.AddMvc();
             services.AddDbContext<CarsContext>(opt => opt.UseInMemoryDatabase("CarsDB"));
+
+            services.AddScoped(typeof(IRepositoryCRUD<>), typeof(RepositoryCRUD<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HCApiTest.Models
 {
-    public class Cars
+    public class Cars:EntityBase
     {
         [Key]
         public int Id { get; set; }
