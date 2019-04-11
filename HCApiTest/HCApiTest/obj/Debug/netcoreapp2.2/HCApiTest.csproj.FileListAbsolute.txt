@@ -1,0 +1,11 @@
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\bin\Debug\netcoreapp2.2\HCApiTest.deps.json
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\bin\Debug\netcoreapp2.2\HCApiTest.runtimeconfig.json
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\bin\Debug\netcoreapp2.2\HCApiTest.runtimeconfig.dev.json
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\bin\Debug\netcoreapp2.2\HCApiTest.dll
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.csprojAssemblyReference.cache
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.csproj.CoreCompileInputs.cache
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.RazorAssemblyInfo.cache
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.RazorAssemblyInfo.cs
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.AssemblyInfoInputs.cache
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.AssemblyInfo.cs
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.RazorTargetAssemblyInfo.cache
