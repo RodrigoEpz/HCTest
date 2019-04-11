@@ -9,3 +9,6 @@ D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest
 D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.AssemblyInfoInputs.cache
 D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.AssemblyInfo.cs
 D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.RazorTargetAssemblyInfo.cache
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\bin\Debug\netcoreapp2.2\HCApiTest.pdb
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.dll
+D:\Projects\DevTech\hctest\HCApiTest\HCApiTest\obj\Debug\netcoreapp2.2\HCApiTest.pdb
