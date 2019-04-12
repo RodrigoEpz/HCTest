@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { Alert } from 'reactstrap';
 import './app.css'
 import { alertActions } from '../Actions/alertActions';
+import Cars from '../Views/Cars/cars';
 
 class App extends React.Component {
 
@@ -17,7 +18,7 @@ class App extends React.Component {
                 {alert.message&&
                     <Alert fade={true} toggle={this.onDismiss} className={`${alert.type} right-alert`}>{alert.message}</Alert >
                 }
-                <h1>Hola HC</h1>
+                <Cars/>
             </div>
         );
     }

@@ -7,7 +7,7 @@ import { alert } from './alertReducer'
 
 const rootReducer = 
 combineReducers({
-//cars,
+cars,
 alert
 });
 

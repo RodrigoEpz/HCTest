@@ -24,12 +24,9 @@ namespace HCApiTest
             services.AddDbContext<CarsContext>(opt => opt.UseInMemoryDatabase("CarsDB"));
 
             services.AddScoped(typeof(IRepositoryCRUD<>), typeof(RepositoryCRUD<>));
-            //services.AddScoped<CarServices>();
+            services.AddScoped<CarServices>();
 
-            //services.AddCors(c =>
-            //{
-            //    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            //});
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,8 +37,14 @@ namespace HCApiTest
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder
+                          .AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials());
+
             app.UseMvc();
-            //app.UseCors("AllowOrigin");
+           
 
             if (!context.Cars.Any())
             {

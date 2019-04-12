@@ -8,6 +8,7 @@ import rootReducer from './Reducers'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import * as serviceWorker from './serviceWorker';
 import App from './Containers/App.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const loggerMiddleware = createLogger()
 const store = createStore(

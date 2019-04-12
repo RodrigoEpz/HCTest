@@ -1,0 +1,10 @@
+.spinner{
+    text-align: -webkit-center;
+}
+.update-btn-crud-table{
+    float: left;
+}
+
+.delete-btn-crud-table{
+    float: right;
+}
