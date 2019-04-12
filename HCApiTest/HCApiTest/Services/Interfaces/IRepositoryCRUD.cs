@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace HCApiTest.Services.Interfaces
 {
-    public interface IRepositoryCRUD<T> where T : EntityBase
+    public interface IRepositoryCRUD<T> where T : Entity
     {
-        void Add(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        bool Add(T entity);
+        bool Delete(T entity);
+        bool Update(T entity);
         IEnumerable<T> GetAll();
         T FindById(int Id);
     }

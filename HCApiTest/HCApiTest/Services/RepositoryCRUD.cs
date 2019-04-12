@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HCApiTest.Services
 {
-    public class RepositoryCRUD<TEntity> : IRepositoryCRUD<TEntity> where TEntity : EntityBase
+    public class RepositoryCRUD<TEntity> : IRepositoryCRUD<TEntity> where TEntity: Entity
     {
         DbSet<TEntity> entities;
         CarsContext context;
@@ -19,22 +19,22 @@ namespace HCApiTest.Services
             entities = _carContext.Set<TEntity>();
         }
 
-        public void Add(TEntity entity)
+        public bool Add(TEntity entity)
         {
             entities.Add(entity);
-            context.SaveChanges();
+            return context.SaveChanges() > 0 ;
         }
 
-        public void Delete(TEntity entity)
+        public bool Delete(TEntity entity)
         {
             entities.Remove(entity);
-            context.SaveChanges();
+            return context.SaveChanges() > 0 ;
         }
 
-        public void Update(TEntity entity)
+        public bool Update(TEntity entity)
         {
             entities.Update(entity);
-            context.SaveChanges();
+            return context.SaveChanges() > 0 ;
 
         }
 

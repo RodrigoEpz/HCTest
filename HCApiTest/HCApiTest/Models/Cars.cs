@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace HCApiTest.Models
 {
-    public class Cars:EntityBase
+    public class Cars:Entity
     {
-        [Key]
-        public int Id { get; set; }
-
         [MaxLength(50, ErrorMessage = "Model length only can be of 50 characters")]
         public string Model { get; set; }
 

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HCApiTest.Models.Utils;
 
 namespace HCApiTest.Controllers
 {
@@ -14,23 +15,60 @@ namespace HCApiTest.Controllers
     [ApiController]
     public class CarsController : ControllerBase
     {
-        IRepositoryCRUD<Cars> carsRepository;
+        CarServices carService;
 
-        public CarsController(IRepositoryCRUD<Cars> _carsRepository)
+        public CarsController(CarServices _carService)
         {
-            this.carsRepository = _carsRepository;
+            this.carService = _carService;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Cars>> Get()
+        public ActionResult<IEnumerable<Cars>> GetAll()
         {
-            return Ok(carsRepository.GetAll());
+            return Ok(carService.GetAll());
         }
 
         [HttpGet("{id}")]
         public ActionResult<Cars> Get(int id)
         {
-            return Ok(carsRepository.FindById(id));
+            var car = carService.GetById(id);
+            if(car != null)
+            {
+                return Ok(car);
+            }
+            return NotFound();
+        }
+
+
+        [HttpPost]
+        public ActionResult<ResponseCRUDMessage> Post([FromBody]Cars car)
+        {
+            if (ModelState.IsValid)
+            {
+                return Ok(carService.Add(car));
+            }
+            return BadRequest();
+        }
+
+        [HttpPut]
+        public ActionResult<ResponseCRUDMessage> Put([FromBody]Cars car)
+        {
+            if (ModelState.IsValid)
+            {
+                return Ok(carService.Update(car));
+            }
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<ResponseCRUDMessage> Delete(int id)
+        {
+            var carDeleted = carService.Delete(id);
+            if (carDeleted.status)
+            {
+                return Ok(carDeleted);
+            }
+            return NotFound();
         }
     }
 }
