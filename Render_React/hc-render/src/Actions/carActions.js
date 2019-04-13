@@ -88,7 +88,7 @@ function deleteCar(id){
 }
 function getCheaper() {
     return dispatch => {
-        carsService.getAll().then(
+        carsService.getCheaper().then(
             car => {
                 dispatch(success(car));
             },

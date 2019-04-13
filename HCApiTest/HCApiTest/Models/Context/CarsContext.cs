@@ -8,6 +8,10 @@ namespace HCApiTest.Models.Context
 {
     public class CarsContext : DbContext
     {
+        public CarsContext()
+        {
+
+        }
         public CarsContext(DbContextOptions<CarsContext> opt): base(opt)
         {
         }

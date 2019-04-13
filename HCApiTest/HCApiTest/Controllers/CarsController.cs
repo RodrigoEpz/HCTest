@@ -78,5 +78,11 @@ namespace HCApiTest.Controllers
             }
             return NotFound(carDeleted);
         }
+
+        [HttpGet("cheaper")]
+        public ActionResult<ResponseCRUDMessage> Cheaper()
+        {
+            return Ok(carService.GetCheaper());
+        }
     }
 }

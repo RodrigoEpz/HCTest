@@ -1,8 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import {Card, CardBody, Row, Col, Button, Table} from 'reactstrap'
 import { carsActions } from '../../Actions/carActions';
 
-export default class QuickSearchCars extends React.PureComponent{
+class QuickSearchCars extends React.PureComponent{
 
     handleSubmit = (event) => {
         event.preventDefault()
@@ -64,7 +65,8 @@ export default class QuickSearchCars extends React.PureComponent{
                             Cheaper
                         </Button>
                         </Col>
-                    </Row>      
+                    </Row>   
+                    <br/>
                     {quickSearch}
                 </CardBody>
             </Card>
@@ -72,3 +74,12 @@ export default class QuickSearchCars extends React.PureComponent{
         )
     }
 }
+
+function mapStateToProps(props) {
+    const { cars } = props;
+    return {
+        cars
+    };
+}
+
+export default connect(mapStateToProps)(QuickSearchCars)

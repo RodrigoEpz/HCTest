@@ -1,4 +1,5 @@
 ﻿using HCApiTest.Models;
+using HCApiTest.Models.Context;
 using HCApiTest.Models.Utils;
 using HCApiTest.Services.Interfaces;
 using System;
@@ -101,6 +102,11 @@ namespace HCApiTest.Services
             {
                 throw ex;
             }
+        }
+
+        public Cars GetCheaper()
+        {
+            return carsRepository.GetAll().OrderBy(p => p.Price).FirstOrDefault();
         }
     }
 }

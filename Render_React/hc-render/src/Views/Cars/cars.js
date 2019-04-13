@@ -157,8 +157,7 @@ class Cars extends React.Component{
                                     />
                                 </TabPane>
                                 <TabPane tabId="2">
-                                    <QuickSearchCars
-                                    cars= {cars}
+                                    <QuickSearchCars                                    
                                 />       
                                 </TabPane>                    
                             </TabContent>
@@ -184,7 +183,7 @@ class Cars extends React.Component{
         )
     }
 }
-
+    
 function mapStateToProps(props) {
     const { cars, common } = props;
     return {
