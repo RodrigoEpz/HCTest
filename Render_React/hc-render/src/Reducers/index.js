@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { cars } from './carsReducer'
 import { alert } from './alertReducer'
+import {common} from './commonReducer'
 
 
 
@@ -8,7 +9,8 @@ import { alert } from './alertReducer'
 const rootReducer = 
 combineReducers({
 cars,
-alert
+alert,
+common
 });
 
 export default rootReducer;

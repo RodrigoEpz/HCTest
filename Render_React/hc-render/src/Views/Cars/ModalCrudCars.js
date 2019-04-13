@@ -3,60 +3,78 @@ import { Button, Col,
     Modal, ModalHeader, ModalBody, ModalFooter,
     Form, FormGroup, Input,
     Row, Label } from 'reactstrap'
+import GenericSelect from '../../Helpers/Components/genericSelect'
+import {getLastFifteenYears} from '../../Helpers/Utils/formats'
 
 
 class ModalCrudCars extends React.Component {
     
+    handleSelect = (event) =>{
+        console.log(event.target)
+    }
+
     render(){
-        const {modalCrud, toggleModalCrud, typeOp, handleSubmit} = this.props;
+        const {modalCrud, toggleModalCrud, typeOp, handleSubmit, cars, handleInputChange, setDefaultValuesToState} = this.props;
+        const carToUpdate = cars.edit.status && cars.edit.car
+        const yearsOption = getLastFifteenYears()
+        const brandsOption = ["Ford","VW","Mazda","Fiat","Renault", "Chevrolet"]   
+
         return(
             <Modal isOpen={modalCrud} toggle={toggleModalCrud}>
             <ModalHeader toggle={toggleModalCrud}>{typeOp} </ModalHeader>
             <ModalBody>
-                <Form method = "POST" >
+                <Form >
                     <FormGroup>
-                        <Label for="NombreHorario"> Nombre de Horario: </Label>
-                        <Input id="NombreHorario" placeholder="Brand"/>
+                        <Label for="model">Model: </Label>
+                        <Input id="model" placeholder="Model"
+                        defaultValue={carToUpdate ? carToUpdate.model : ""}
+                        onChange={handleInputChange}/>
                     </FormGroup>
-                    <FormGroup>
-                        <Label for="Descripcion">Descripcion: </Label>
-                        <Input id="Descripcion" placeholder="Description"/>
-                    </FormGroup>
-                    
                     <Row>
                         <Col md="6">
                             <FormGroup>
-                                <Label for="horaInicio">Hora Inicial: </Label>
-                                <Input id="horaInicio" />
+                                <Label for="kilometers"> Kilometers: </Label>
+                                <Input id="kilometers" placeholder="Kilometers" type="number"
+                                defaultValue={carToUpdate ? carToUpdate.kilometers : ""} 
+                                onChange={handleInputChange}/>
                             </FormGroup>
                         </Col>
                         <Col md="6">
                             <FormGroup>
-                                <Label for="horaFinal"> Hora Final: </Label>
-                                <Input id="horaFinal" />
+                                <Label for="price">Price: </Label>
+                                <Input id="price" placeholder="Price" type="number"
+                                defaultValue={carToUpdate ? carToUpdate.price : ""}
+                                onChange={handleInputChange}/>
                             </FormGroup>
                         </Col>
                     </Row>
                     <Row>
+                        <Col md="6">
+                            <FormGroup>
+                                <Label for="year">Year: </Label>
+                                <GenericSelect id="year" 
+                                options={yearsOption} 
+                                selected={carToUpdate ? carToUpdate.year : 0}
+                                setDefaultValuesToState={setDefaultValuesToState}
+                                handleInputChange={handleInputChange}></GenericSelect>
+                            </FormGroup>
+                        </Col>
                         <Col md="6">
                         <FormGroup>
-                            <Label for="exampleSelect">Select</Label>
-                            <Input type="select" name="select" id="exampleSelect">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </Input>
-                        </FormGroup>
-                        </Col>
-                        <Col md="6">
-                            <FormGroup>
-                                <Label for="horaFinal"> Hora Final: </Label>
-                                <Input id="horaFinal" />
+                                <Label for="brand">Brand: </Label>
+                                <GenericSelect id="brand" options={brandsOption}
+                                selected={carToUpdate ? carToUpdate.brand : ""}
+                                setDefaultValuesToState={setDefaultValuesToState}
+                                handleInputChange={handleInputChange}></GenericSelect>
                             </FormGroup>
                         </Col>
                     </Row>
+                    <FormGroup>
+                        <Label for="description"> Description: </Label>
+                        <Input id="description" 
+                        defaultValue={carToUpdate ? carToUpdate.description : ""}
+                        onChange={handleInputChange}/>
+                    </FormGroup>
                 </Form>
             </ModalBody>
             <ModalFooter>

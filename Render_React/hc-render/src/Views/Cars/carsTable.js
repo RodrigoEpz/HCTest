@@ -5,7 +5,6 @@ class CarsTable extends React.PureComponent{
 
     render(){
         const {cars} = this.props;
-        console.log(cars)
         return(
             <Card>
                 <CardBody>
@@ -31,7 +30,7 @@ class CarsTable extends React.PureComponent{
                                         <td>{car.kilometers}</td>
                                         <td>{car.price}</td>
                                         <td id={car.id}>
-                                            <Button className="update-btn-crud-table" color="primary" data-typeop='Edit' onClick={this.props.toggleModalCrud}>Update</Button>
+                                            <Button className="update-btn-crud-table" color="primary" data-typeop='Edit' onClick={this.props.toggleModalCrud}>Edit</Button>
                                             <Button className="delete-btn-crud-table" color="danger" data-typeop='Delete' onClick={this.props.toggleModalCrud}>Delete</Button>
                                         </td>
                                     </tr>)
@@ -39,15 +38,11 @@ class CarsTable extends React.PureComponent{
                             </tbody>
                         </Table>
                     </Row>
-                    {/* <CrudTable
-                        dataTable = {this.props.schedules}
-                        {...this.props}
-                    /> */}
                     <br/>
                     <Row>
                         <Col md={{size : 2, offset : 10}}>
                         <Button color="success" data-typeop='Create' onClick={this.props.toggleModalCrud}>
-                            Crear
+                            Create
                         </Button>
                         </Col>
                     </Row>                

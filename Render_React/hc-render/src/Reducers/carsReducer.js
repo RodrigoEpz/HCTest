@@ -6,11 +6,21 @@ const initialState = {
         status: false
     },
     edit:{
-        car:{},
+        car:{
+            brand:'',
+            description:'',
+            model:'',
+            year: 0,
+            price: 0,
+            kilometers: 0
+        },
         status: false
     },
     modalCrud: false,
-    typeOp: ''
+    typeOp: '',
+    quicksearch:{
+        car:{},
+    }
 }
 
 export function cars(state = initialState, action) {
@@ -24,24 +34,47 @@ export function cars(state = initialState, action) {
         }
       };
 
-    case carsConstants.GET_BY_ID:
-      return {
-        ...state,
-        edit: {
-            car: action.car,
-            status: true
+    case carsConstants.GET_MOST_CHEAPER:{
+        return {
+            ...state,
+            quicksearch:{
+                car: action.car
+            }
         }
-      };
+    }
 
-    case carsConstants.GET_MOST_CHEAPER:
-      return state;
-
-      case carsConstants.TOGGLEMODAL:{
+    case carsConstants.TOGGLEMODAL:{
         const newmodalState = !state.modalCrud
         return {
             ...state,
+            edit: initialState.edit,
             modalCrud: newmodalState,
             typeOp: action.typeOp || ''
+        }
+    }
+
+    case carsConstants.SHOWMODALEDIT:{
+        const carToUpdate = action.carToUpdate ? action.carToUpdate : initialState.edit.car
+        return{
+            ...state,
+            modalCrud: true,
+            typeOp: action.typeOp || '',
+            edit:{
+                car: carToUpdate,
+                status: true
+            }            
+        }
+    }
+
+    case carsConstants.MODIFY_CAR_TO_EDIT : {
+        console.log(state)
+        return{
+            ...state,
+            edit: Object.assign({}, state.edit, {
+                car: Object.assign({}, state.edit.car, {
+                    [action.key]: action.value
+                })
+            })
         }
     }
 
