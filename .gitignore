@@ -1,5 +1,6 @@
 /Render_React/hc-render/node_modules*
 /HCApiTest/HCApiTest/bin
+/HCApiTest/HCApiTest/obj
 *npm-debug.log
 .vscode*
 .vs*
