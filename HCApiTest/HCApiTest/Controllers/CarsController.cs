@@ -41,21 +41,29 @@ namespace HCApiTest.Controllers
 
 
         [HttpPost]
-        public ActionResult<ResponseCRUDMessage> Post([FromBody]Cars car)
+        public async Task<ActionResult<ResponseCRUDMessage>> Post([FromBody]Cars car)
         {
             if (ModelState.IsValid)
             {
-                return Ok(carService.Add(car));
+                return Ok(await carService.Add(car));
             }
             return BadRequest();
         }
 
         [HttpPut]
-        public ActionResult<ResponseCRUDMessage> Put([FromBody]Cars car)
+        public async Task<ActionResult<ResponseCRUDMessage>> Put([FromBody]Cars car)
         {
             if (ModelState.IsValid)
             {
-                return Ok(carService.Update(car));
+                var carUpdated = await carService.Update(car);
+                if (carUpdated.status)
+                {
+                    return Ok(carService.Update(car));
+                }
+                else
+                {
+                    return NotFound(carUpdated);
+                }
             }
             return BadRequest();
         }
@@ -68,7 +76,7 @@ namespace HCApiTest.Controllers
             {
                 return Ok(carDeleted);
             }
-            return NotFound();
+            return NotFound(carDeleted);
         }
     }
 }

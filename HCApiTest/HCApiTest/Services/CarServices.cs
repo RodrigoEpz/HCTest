@@ -17,12 +17,12 @@ namespace HCApiTest.Services
             carsRepository = _carsRepository;
         }
 
-        public ResponseCRUDMessage Add (Cars car)
+        public async Task<ResponseCRUDMessage> Add (Cars car)
         {
             var response = new ResponseCRUDMessage(false, "");
             try
             {
-                response.status = carsRepository.Add(car);
+                response.status = await carsRepository.Add(car);
                 response.message = "The car was created!";
             }
             catch (Exception ex)
@@ -32,18 +32,21 @@ namespace HCApiTest.Services
             return response;
         }
 
-        public ResponseCRUDMessage Update(Cars car)
+        public async Task<ResponseCRUDMessage> Update(Cars car)
         {
+            var response = new ResponseCRUDMessage(false, "");
             var carExist = carsRepository.FindById(car.Id);
+            
             if(carExist == null)
             {
-                return null;
+                response.message = "The car not exist!";
+                return response;
             }
-            var response = new ResponseCRUDMessage(false, "");
+            carExist = car;
             try
             {
 
-                response.status = carsRepository.Update(car);
+                response.status = await carsRepository.Update(carExist);
                 if (response.status) { response.message = "The car was updated!"; }
                 else { return null; }
             }
@@ -56,12 +59,13 @@ namespace HCApiTest.Services
 
         public ResponseCRUDMessage Delete(int id)
         {
+            var response = new ResponseCRUDMessage(false, "");
             var car = carsRepository.FindById(id);
             if(car == null)
             {
-                return null;
+                response.message = "The car not exist!";
+                return response;
             }
-            var response = new ResponseCRUDMessage(false, "");
             try
             {
                 response.status = carsRepository.Delete(car);

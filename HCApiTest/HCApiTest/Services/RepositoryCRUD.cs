@@ -19,10 +19,10 @@ namespace HCApiTest.Services
             entities = _carContext.Set<TEntity>();
         }
 
-        public bool Add(TEntity entity)
+        public async Task<bool> Add(TEntity entity)
         {
             entities.Add(entity);
-            return context.SaveChanges() > 0 ;
+            return  await context.SaveChangesAsync() > 0 ;
         }
 
         public bool Delete(TEntity entity)
@@ -31,10 +31,10 @@ namespace HCApiTest.Services
             return context.SaveChanges() > 0 ;
         }
 
-        public bool Update(TEntity entity)
+        public async Task<bool> Update(TEntity entity)
         {
             entities.Update(entity);
-            return context.SaveChanges() > 0 ;
+            return await context.SaveChangesAsync() > 0 ;
 
         }
 
@@ -45,7 +45,7 @@ namespace HCApiTest.Services
 
         public TEntity FindById(int Id)
         {
-            return entities.FirstOrDefault(entity => entity.Id == Id);
+            return entities.AsNoTracking().FirstOrDefault(entity => entity.Id == Id);
           
         }
 
